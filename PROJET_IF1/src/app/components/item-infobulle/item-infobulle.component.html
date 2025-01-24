@@ -1,1 +1,32 @@
-<p>item-infobulle works!</p>
+<div class="infobulle" *ngIf="item" [style.left.px]="x" [style.top.px]="y">
+  <div class="infobulle-header">
+    <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
+    <div>
+      <h3>{{ item.name }}</h3>
+      <p>Niveau {{ item.level }}</p>
+    </div>
+  </div>
+
+  <p class="description" *ngIf="item.description">{{ item.description }}</p>
+
+  <div class="characteristics">
+    <h4>Caractéristiques</h4>
+    <ul>
+      <li *ngFor="let charac of item.characteristics">
+        <span [class.bonus]="charac.type === 'BONUS'"
+              [class.malus]="charac.type === 'MALUS'">
+          {{ charac.min }} - {{ charac.max }} {{ charac.characteristicType }}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="effects" *ngIf="item.effects && item.effects.length > 0">
+    <h4>Effets</h4>
+    <ul>
+      <li *ngFor="let effect of item.effects">
+        {{ effect.effectType }} {{ effect.min || '' }} - {{ effect.max || '' }}
+      </li>
+    </ul>
+  </div>
+</div>

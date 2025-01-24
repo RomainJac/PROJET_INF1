@@ -1,0 +1,39 @@
+.infobulle {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.infobulle-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.description {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.characteristics, .effects {
+  margin-top: 10px;
+}
+
+.bonus {
+  color: lightgreen;
+}
+
+.malus {
+  color: red;
+}

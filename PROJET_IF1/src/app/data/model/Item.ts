@@ -1,21 +1,42 @@
 export interface Item {
-  characteristics: CharacteristicLine[]
-  name: string
-  level: number
-  imageUrl: string
-  type: ItemType
+  name: string;
+  level: number;
+  imageUrl: string;
+  type: ItemType;
+  characteristics: CharacteristicLine[];
+  pods: number;
+  description?: string;
+  conditions?: Condition[];
+  effects?: Effect[];
 }
-
 
 export interface CharacteristicLine {
-  type: "BONUS" | "MALUS",
-  min: number,
-  max: number,
-  characteristicType: CharacteristicType
+  type: "BONUS" | "MALUS";
+  min: number;
+  max: number;
+  characteristicType: CharacteristicType;
 }
 
+export interface Condition {
+  characteristic: CharacteristicType;
+  min?: number;
+  max?: number;
+  operator: ">=" | "<=" | "=";
+}
+
+export interface Effect {
+  effectType: EffectType;
+  min?: number;
+  max?: number;
+}
+
+export type EffectType =
+  | "Vol de vie"
+  | "Vol de PA"
+  | "Vol de PM"
+
 export type CharacteristicType =
-  "Vitalité"
+  | "Vitalité"
   | "Force"
   | "Agilité"
   | "Intelligence"
@@ -24,6 +45,7 @@ export type CharacteristicType =
   | "PA"
   | "PM"
   | "PO"
+  | "Invocation"
   | "Initiative"
   | "Prospection"
   | "Tacle"
@@ -45,11 +67,10 @@ export type CharacteristicType =
   | "Dommage Eau"
   | "Dommage Air"
   | "Dommage Feu"
-  | "Dommage Terre"
-
+  | "Dommage Terre";
 
 export type ItemType =
-  "Amulette"
+  | "Amulette"
   | "Anneau"
   | "Bottes"
   | "Bouclier"
@@ -60,4 +81,4 @@ export type ItemType =
   | "Familier"
   | "Sac à dos"
   | "Trophée"
-  | "Arme"
+  | "Arme";

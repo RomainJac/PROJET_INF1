@@ -1,1 +1,11 @@
-<p>item-icon works!</p>
+<div class="item-icon-container"
+     (mouseenter)="showTooltip($event)"
+     (mouseleave)="hideTooltip()">
+  <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
+</div>
+
+<app-item-infobulle *ngIf="showInfobulle"
+                    [x]="tooltipX"
+                    [y]="tooltipY"
+                    [item]="item">
+</app-item-infobulle>
