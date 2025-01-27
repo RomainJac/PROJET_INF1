@@ -1,6 +1,5 @@
-// infobulle-effect-line.component.ts
 import { Component, Input } from '@angular/core';
-import {Effect, EffectType} from "../../data/model/Item";
+import {Effect} from "../../data/model/Item";
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -33,6 +32,6 @@ export class InfobulleEffectLineComponent {
       "Eau": "effect-water",
       "Air": "effect-air"
     };
-    return classMap[this.effect.element] || "effect-neutral"; // Par défaut, "effect-neutral"
+    return classMap[this.effect.element] || "effect-neutral";
   }
 }

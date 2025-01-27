@@ -2,6 +2,7 @@ import {Item} from "../model/Item";
 
 export const ITEMS_FIXTURE: Item[] = [
     {
+      id: '1',
       name: "Amulette du Bouftou",
       level: 10,
       imageUrl: "https://api.dofusdb.fr/img/items/6007.png",
@@ -14,6 +15,7 @@ export const ITEMS_FIXTURE: Item[] = [
       description: "Une amulette en cuir de Bouftou, robuste et résistante.",
     },
     {
+      id: '2',
       name: "Anneau du Jeune Aventurier",
       level: 5,
       imageUrl: "https://api.dofusdb.fr/img/items/6008.png",
@@ -28,6 +30,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 5,
     },
     {
+      id: '3',
       name: "Bottes de l'Apprenti",
       level: 12,
       imageUrl: "https://api.dofusdb.fr/img/items/6009.png",
@@ -39,6 +42,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 15,
     },
     {
+      id: '4',
       name: "Bouclier du Guerrier",
       level: 25,
       imageUrl: "https://api.dofusdb.fr/img/items/6003.png",
@@ -52,6 +56,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '5',
       name: "Cape du Démon",
       level: 18,
       imageUrl: "https://api.dofusdb.fr/img/items/6014.png",
@@ -63,6 +68,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 12,
     },
     {
+      id: '6',
       name: "Ceinture du Chasseur",
       level: 20,
       imageUrl: "https://api.dofusdb.fr/img/items/6089.png",
@@ -73,6 +79,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 10,
     },
     {
+      id: '7',
       name: "Coiffe du Sage",
       level: 15,
       imageUrl: "https://api.dofusdb.fr/img/items/5007.png",
@@ -83,6 +90,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 8,
     },
     {
+      id: '8',
       name: "Dofus Écarlate",
       level: 50,
       imageUrl: "https://api.dofusdb.fr/img/items/4007.png",
@@ -93,6 +101,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 1,
     },
     {
+      id: '9',
       name: "Familier Tofu",
       level: 1,
       imageUrl: "https://api.dofusdb.fr/img/items/9007.png",
@@ -103,6 +112,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 5,
     },
     {
+      id: '10',
       name: "Sac à dos du Voyageur",
       level: 30,
       imageUrl: "https://api.dofusdb.fr/img/items/8007.png",
@@ -113,6 +123,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 25,
     },
     {
+      id: '11',
       name: "Épée de Bravoure",
       level: 35,
       imageUrl: "https://api.dofusdb.fr/img/items/10007.png",
@@ -125,6 +136,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 18,
     },
     {
+      id: '12',
       name: "Bouclier de l'Ancien",
       level: 40,
       imageUrl: "https://api.dofusdb.fr/img/items/11007.png",
@@ -137,6 +149,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 22,
     },
     {
+      id: '13',
       name: "Anneau du Sage",
       level: 28,
       imageUrl: "https://api.dofusdb.fr/img/items/9011.png",
@@ -149,6 +162,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 8,
     },
     {
+      id: '14',
       name: "Amulette du Bouftou",
       level: 10,
       imageUrl: "https://api.dofusdb.fr/img/items/6007.png",
@@ -167,6 +181,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '15',
       name: "Anneau du Jeune Aventurier",
       level: 5,
       imageUrl: "https://api.dofusdb.fr/img/items/6008.png",
@@ -186,6 +201,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '16',
       name: "Bottes de l'Apprenti",
       level: 12,
       imageUrl: "https://api.dofusdb.fr/img/items/6009.png",
@@ -206,6 +222,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '17',
       name: "Bouclier du Guerrier",
       level: 25,
       imageUrl: "https://api.dofusdb.fr/img/items/6003.png",
@@ -225,6 +242,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '18',
       name: "Cape du Démon",
       level: 18,
       imageUrl: "https://api.dofusdb.fr/img/items/6014.png",
@@ -241,6 +259,7 @@ export const ITEMS_FIXTURE: Item[] = [
       conditions: [],
     },
     {
+      id: '19',
       name: "Ceinture du Chasseur",
       level: 20,
       imageUrl: "https://api.dofusdb.fr/img/items/6089.png",
@@ -259,6 +278,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '20',
       name: "Épée du Dragon",
       level: 40,
       imageUrl: "https://api.dofusdb.fr/img/items/11007.png",
@@ -280,6 +300,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
     },
     {
+      id: '21',
       name: "Hache du Guerrier",
       level: 35,
       imageUrl: "https://api.dofusdb.fr/img/items/5011.png",
@@ -298,6 +319,7 @@ export const ITEMS_FIXTURE: Item[] = [
       conditions: [{characteristic: "Agilité", min: 15, operator: ">="}],
     },
     {
+      id: '22',
       name: "Épée de Bravoure",
       level: 35,
       imageUrl: "https://api.dofusdb.fr/img/items/10007.png",

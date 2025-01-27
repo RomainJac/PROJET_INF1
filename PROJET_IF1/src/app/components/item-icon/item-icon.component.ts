@@ -1,29 +1,43 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ItemInfobulleComponent } from '../item-infobulle/item-infobulle.component';
-import {Item} from "../../data/model/Item";
+import { Router } from '@angular/router';
+import { Item } from "../../data/model/Item";
+import {ItemInfobulleComponent} from "../item-infobulle/item-infobulle.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-item-icon',
-  standalone: true,
-  imports: [CommonModule, ItemInfobulleComponent],
   templateUrl: './item-icon.component.html',
-  styleUrl: './item-icon.component.css'
+  standalone: true,
+  imports: [
+    ItemInfobulleComponent,
+    NgIf
+  ],
+  styleUrls: ['./item-icon.component.css']
 })
 export class ItemIconComponent {
-  @Input() item!: Item;
-
+  @Input() item: Item | undefined;
   showInfobulle = false;
   tooltipX = 0;
   tooltipY = 0;
 
-  showTooltip(event: MouseEvent) {
-    this.tooltipX = event.clientX + 10; // Décalage pour éviter de masquer le curseur
-    this.tooltipY = event.clientY + 10;
-    this.showInfobulle = true;
+  constructor(private router: Router) {}
+
+
+  onIconClick(): void {
+    if (this.item) {
+      this.router.navigate(['/items', this.item.id]);
+    }
   }
 
-  hideTooltip() {
+
+  showTooltip(event: MouseEvent): void {
+    this.showInfobulle = true;
+    this.tooltipX = event.clientX + 10;
+    this.tooltipY = event.clientY + 10;
+  }
+
+
+  hideTooltip(): void {
     this.showInfobulle = false;
   }
 }

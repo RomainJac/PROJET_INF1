@@ -1,7 +1,8 @@
 <div class="item-icon-container"
      (mouseenter)="showTooltip($event)"
-     (mouseleave)="hideTooltip()">
-  <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
+     (mouseleave)="hideTooltip()"
+     (click)="onIconClick()">
+  <img [src]="item?.imageUrl" [alt]="item?.name" class="item-icon">
 </div>
 
 <app-item-infobulle *ngIf="showInfobulle"

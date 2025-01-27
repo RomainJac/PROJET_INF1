@@ -6,11 +6,12 @@ import {
 } from "../infobulle-characteristic-line/infobulle-characteristic-line.component";
 import {InfobulleDescriptionComponent} from "../infobulle-description/infobulle-description.component";
 import {InfobulleEffectLineComponent} from "../infobulle-effect-line/infobulle-effect-line.component";
+import {InfobulleConditionComponent} from "../infobulle-condition/infobulle-condition.component";
 
 @Component({
   selector: 'app-item-infobulle',
   standalone: true,
-  imports: [CommonModule, InfobulleCharacteristicLineComponent, InfobulleDescriptionComponent, InfobulleEffectLineComponent],
+  imports: [CommonModule, InfobulleCharacteristicLineComponent, InfobulleDescriptionComponent, InfobulleEffectLineComponent, InfobulleConditionComponent],
   templateUrl: './item-infobulle.component.html',
   styleUrl: './item-infobulle.component.css'
 })
