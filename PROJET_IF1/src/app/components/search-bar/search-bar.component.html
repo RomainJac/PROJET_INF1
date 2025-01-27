@@ -1,6 +1,10 @@
-<input
-  type="text"
-  [placeholder]="placeholder"
-  (input)="onSearch($event)"
-  class="search-input"
-/>
+<div
+  class="flex items-center w-full max-w-lg mx-auto p-2 bg-white border border-gray-300 rounded-2xl shadow-sm focus-within:shadow-md transition-shadow duration-200">
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [(ngModel)]="inputValue"
+    (input)="onSearch($event)"
+    class="w-full bg-transparent outline-none text-sm p-2"
+  />
+</div>
