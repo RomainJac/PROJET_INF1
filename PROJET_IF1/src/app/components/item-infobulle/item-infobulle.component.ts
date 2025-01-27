@@ -4,11 +4,13 @@ import {Item} from "../../data/model/Item";
 import {
   InfobulleCharacteristicLineComponent
 } from "../infobulle-characteristic-line/infobulle-characteristic-line.component";
+import {InfobulleDescriptionComponent} from "../infobulle-description/infobulle-description.component";
+import {InfobulleEffectLineComponent} from "../infobulle-effect-line/infobulle-effect-line.component";
 
 @Component({
   selector: 'app-item-infobulle',
   standalone: true,
-  imports: [CommonModule, InfobulleCharacteristicLineComponent],
+  imports: [CommonModule, InfobulleCharacteristicLineComponent, InfobulleDescriptionComponent, InfobulleEffectLineComponent],
   templateUrl: './item-infobulle.component.html',
   styleUrl: './item-infobulle.component.css'
 })

@@ -7,23 +7,21 @@
     </div>
   </div>
 
-  <p class="description" *ngIf="item.description">{{ item.description }}</p>
-
+  <app-infobulle-description [description]="item.description"></app-infobulle-description>
+  <div class="effects" *ngIf="item.effects && item.effects.length > 0">
+    <h4>Effets</h4>
+    <ul>
+      <app-infobulle-effect-line *ngFor="let effect of item.effects"
+                                 [effect]="effect">
+      </app-infobulle-effect-line>
+    </ul>
+  </div>
   <div class="characteristics">
     <h4>Caractéristiques</h4>
     <ul>
       <app-infobulle-characteristic-line *ngFor="let charac of item.characteristics"
                                          [characteristic]="charac">
       </app-infobulle-characteristic-line>
-    </ul>
-  </div>
-
-  <div class="effects" *ngIf="item.effects && item.effects.length > 0">
-    <h4>Effets</h4>
-    <ul>
-      <li *ngFor="let effect of item.effects">
-        {{ effect.effectType }} {{ effect.min || '' }} - {{ effect.max || '' }}
-      </li>
     </ul>
   </div>
 </div>

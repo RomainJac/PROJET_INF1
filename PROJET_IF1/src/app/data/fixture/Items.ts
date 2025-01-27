@@ -181,7 +181,7 @@ export const ITEMS_FIXTURE: Item[] = [
       pods: 5,
       conditions: [],
       effects: [
-        {effectType: "Vol de PA", element: "Neutre", min: 3},
+        {effectType: "Vol de vie", element: "Neutre", min: 3, max: 5},
         {effectType: "Dommage", element: "Feu", min: 10, max: 20},
       ],
     },
@@ -198,8 +198,8 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
       pods: 15,
       effects: [
-        {effectType: "Vol de PM", element: "Eau", min: 1},
-        {effectType: "Dommage", element: "Air", min: 5},
+        {effectType: "Dommage", element: "Eau", min: 1, max: 5},
+        {effectType: "Dommage", element: "Air", min: 5, max: 5},
       ],
       conditions: [
         {characteristic: "Agilité", min: 10, operator: ">="},
@@ -236,7 +236,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
       pods: 12,
       effects: [
-        {effectType: "Vol de PA", element: "Air", min: 1},
+        {effectType: "Vol de vie", element: "Air", min: 1, max: 100},
       ],
       conditions: [],
     },
@@ -292,7 +292,7 @@ export const ITEMS_FIXTURE: Item[] = [
       ],
       pods: 18,
       effects: [
-        {effectType: "Vol de PA", element: "Feu", min: 2},
+        {effectType: "Vol de vie", element: "Feu", min: 2},
         {effectType: "Dommage", element: "Terre", min: 10, max: 15},
       ],
       conditions: [{characteristic: "Agilité", min: 15, operator: ">="}],

@@ -33,9 +33,7 @@ export interface Effect {
 
 export type EffectType =
   | "Vol de vie"
-  | "Vol de PA"
-  | "Vol de PM"
-| "Dommage"
+  | "Dommage"
 
 export type CharacteristicType =
   | "Vitalité"
