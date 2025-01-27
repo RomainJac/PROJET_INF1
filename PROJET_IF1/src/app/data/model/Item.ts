@@ -26,6 +26,7 @@ export interface Condition {
 
 export interface Effect {
   effectType: EffectType;
+  element: "Neutre" | "Terre" | "Feu" | "Eau" | "Air";
   min?: number;
   max?: number;
 }
@@ -34,6 +35,7 @@ export type EffectType =
   | "Vol de vie"
   | "Vol de PA"
   | "Vol de PM"
+| "Dommage"
 
 export type CharacteristicType =
   | "Vitalité"

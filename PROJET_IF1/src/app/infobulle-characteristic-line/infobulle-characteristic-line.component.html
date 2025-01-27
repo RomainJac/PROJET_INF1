@@ -1,1 +1,6 @@
-<p>infobulle-characteristic-line works!</p>
+<li>
+  <span [class.bonus]="characteristic.type === 'BONUS'"
+        [class.malus]="characteristic.type === 'MALUS'">
+    {{ displayCharacteristic() }}
+  </span>
+</li>

@@ -12,12 +12,9 @@
   <div class="characteristics">
     <h4>Caractéristiques</h4>
     <ul>
-      <li *ngFor="let charac of item.characteristics">
-        <span [class.bonus]="charac.type === 'BONUS'"
-              [class.malus]="charac.type === 'MALUS'">
-          {{ charac.min }} - {{ charac.max }} {{ charac.characteristicType }}
-        </span>
-      </li>
+      <app-infobulle-characteristic-line *ngFor="let charac of item.characteristics"
+                                         [characteristic]="charac">
+      </app-infobulle-characteristic-line>
     </ul>
   </div>
 
