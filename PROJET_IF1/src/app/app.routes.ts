@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ItemSearchPageComponent } from './item-search-page/item-search-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { ItemSearchPageComponent } from './page/item-search-page/item-search-page.component';
+import { LoginPageComponent } from './page/login-page/login-page.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPageComponent },

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CharacteristicLine } from "../data/model/Item";
+import { CharacteristicLine } from "../../data/model/Item";
 
 @Component({
   selector: 'app-infobulle-characteristic-line',

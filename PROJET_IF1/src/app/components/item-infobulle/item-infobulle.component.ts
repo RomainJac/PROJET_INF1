@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {Item} from "../../data/model/Item";
 import {
   InfobulleCharacteristicLineComponent
-} from "../../infobulle-characteristic-line/infobulle-characteristic-line.component";
+} from "../infobulle-characteristic-line/infobulle-characteristic-line.component";
 
 @Component({
   selector: 'app-item-infobulle',
