@@ -4,7 +4,7 @@
     <span>Dofus Helper</span>
   </div>
   <nav>
-    <a routerLink="/login" routerLinkActive="active">Connexion</a>
     <a routerLink="/items" routerLinkActive="active">Liste items</a>
+    <a class="auth" (click)="handleAuth()">{{ isLoggedIn ? 'Déconnexion' : 'Connexion' }}</a>
   </nav>
 </header>

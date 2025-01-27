@@ -1,5 +1,6 @@
 <app-page-template>
   <button class="back-button" (click)="goBack()">Retour</button>
+
   <div class="item-details" *ngIf="item">
     <div class="item-header">
       <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
@@ -7,22 +8,26 @@
         <h1>{{ item.name }}</h1>
         <p>Niveau {{ item.level }}</p>
       </div>
+
+      <button *ngIf="isLoggedIn" class="fav-button" (click)="toggleFavourite()">
+        <span [ngClass]="isFavourite ? 'heart-filled' : 'heart-outline'">❤️</span>
+      </button>
     </div>
 
     <div class="item-description" *ngIf="item.description">
       <p>{{ item.description }}</p>
     </div>
 
-    <div class="item-characteristics" *ngIf="item.characteristics && item.characteristics.length > 0">
+    <div class="item-characteristics" *ngIf="item.characteristics?.length">
       <h3>Caractéristiques</h3>
       <ul>
         <li *ngFor="let characteristic of item.characteristics">
-          {{ characteristic.characteristicType }}: {{ characteristic.min }} à {{characteristic.max}}
+          {{ characteristic.characteristicType }}: {{ characteristic.min }} à {{ characteristic.max }}
         </li>
       </ul>
     </div>
 
-    <div class="item-effects" *ngIf="item.effects && item.effects.length > 0">
+    <div class="item-effects" *ngIf="item.effects?.length">
       <h3>Effets</h3>
       <ul>
         <li *ngFor="let effect of item.effects">

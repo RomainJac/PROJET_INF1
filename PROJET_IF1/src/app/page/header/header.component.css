@@ -34,3 +34,7 @@ nav a:hover, nav a.active {
   background: #a5d6a7;
   color: #fff;
 }
+
+.auth {
+  cursor:pointer;
+}

@@ -1,58 +1,37 @@
-.item-details {
-  padding: 20px;
+.back-button {
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fav-button {
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.heart-filled {
+  color: red;
+}
+
+.heart-outline {
+  color: black;
+  opacity: 0.5;
 }
 
 .item-header {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
 .item-icon {
   width: 50px;
   height: 50px;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 18px;
-}
-
-.item-description {
-  margin-top: 10px;
-  font-style: italic;
-}
-
-.item-characteristics ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.item-characteristics li,
-.item-effects li {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.item-effects ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* style.css ou dans le fichier CSS du composant */
-.back-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  z-index: 10;
-}
-
-.back-button:hover {
-  background-color: #0056b3;
+  object-fit: cover;
 }
