@@ -1,4 +1,4 @@
 .page-content {
   padding: 24px;
-  min-height: calc(100vh - 120px); /* Ajuste la hauteur pour prendre tout l'écran */
+  min-height: calc(96vh - 120px);
 }
