@@ -26,14 +26,5 @@
         </li>
       </ul>
     </div>
-
-    <div class="item-effects" *ngIf="item.effects?.length">
-      <h3>Effets</h3>
-      <ul>
-        <li *ngFor="let effect of item.effects">
-          {{ effect.effectType }} - {{ effect.min }} à {{ effect.max }} {{ effect.element }}
-        </li>
-      </ul>
-    </div>
   </div>
 </app-page-template>

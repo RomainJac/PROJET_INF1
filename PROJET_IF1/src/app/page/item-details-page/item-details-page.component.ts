@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../../data/model/Item';
 import { PageTemplateComponent } from '../page-template/page-template.component';
-import {NgIf, NgForOf, NgClass} from '@angular/common';
-import { ItemRepository } from '../../data/repository/ItemRepository';
+import { NgIf, NgForOf, NgClass } from '@angular/common';
+import {ItemService} from "../../service/ItemService";
 
 @Component({
   selector: 'app-item-details-page',
@@ -24,7 +24,8 @@ export class ItemDetailsPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private itemService: ItemService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +33,11 @@ export class ItemDetailsPageComponent implements OnInit {
 
     const itemId = this.route.snapshot.paramMap.get('id');
     if (itemId) {
-      this.item = ItemRepository.findById(itemId);
-      this.isFavourite = this.checkIfFavourite(itemId);
+      // Use the service to fetch the item by ID
+      this.itemService.findById(itemId).subscribe((fetchedItem) => {
+        this.item = fetchedItem;
+        this.isFavourite = this.checkIfFavourite(itemId);
+      });
     }
   }
 

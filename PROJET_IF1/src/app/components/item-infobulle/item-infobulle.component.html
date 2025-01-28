@@ -8,14 +8,6 @@
   </div>
 
   <app-infobulle-description [description]="item.description"></app-infobulle-description>
-  <div class="effects" *ngIf="item.effects && item.effects.length > 0">
-    <h4>Effets</h4>
-    <ul>
-      <app-infobulle-effect-line *ngFor="let effect of item.effects"
-                                 [effect]="effect">
-      </app-infobulle-effect-line>
-    </ul>
-  </div>
   <div class="characteristics">
     <h4>Caractéristiques</h4>
     <ul>

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Condition } from "../../data/model/Item";
+import {Component, Input} from '@angular/core';
+import {Condition} from "../../data/model/Item";
 import {NgForOf, NgIf} from "@angular/common";
 
 @Component({

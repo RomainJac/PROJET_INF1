@@ -13,14 +13,22 @@ export class InfobulleCharacteristicLineComponent {
     type: "BONUS",
     min: 0,
     max: 0,
-    characteristicType: "Vitalité"
+    characteristicType: "Vitalité",
+    isPercentage: false
   };
 
   displayCharacteristic() {
-    const { min, max, characteristicType, type } = this.characteristic;
+    const { min, max, characteristicType, type, isPercentage } = this.characteristic;
+
+    const valueSuffix = isPercentage ? '%' : '';
+
     if (type === "MALUS") {
-      return min === max ? `-${min} ${characteristicType}` : `-${min} à -${max} ${characteristicType}`;
+      return min === max
+        ? `-${min}${valueSuffix} ${characteristicType}`
+        : `-${min}${valueSuffix} à -${max}${valueSuffix} ${characteristicType}`;
     }
-    return min === max ? `${min} ${characteristicType}` : `${min} à ${max} ${characteristicType}`;
+    return min === max
+      ? `${min}${valueSuffix} ${characteristicType}`
+      : `${min}${valueSuffix} à ${max}${valueSuffix} ${characteristicType}`;
   }
 }

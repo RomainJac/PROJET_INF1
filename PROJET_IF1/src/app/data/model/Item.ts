@@ -8,13 +8,13 @@ export interface Item {
   pods: number;
   description?: string;
   conditions?: Condition[];
-  effects?: Effect[];
 }
 
 export interface CharacteristicLine {
   type: "BONUS" | "MALUS";
   min: number;
   max: number;
+  isPercentage?: boolean;
   characteristicType: CharacteristicType;
 }
 
@@ -23,13 +23,6 @@ export interface Condition {
   min?: number;
   max?: number;
   operator: ">=" | "<=" | "=";
-}
-
-export interface Effect {
-  effectType: EffectType;
-  element: "Neutre" | "Terre" | "Feu" | "Eau" | "Air";
-  min?: number;
-  max?: number;
 }
 
 export type EffectType =
@@ -41,6 +34,9 @@ export type CharacteristicType =
   | "Force"
   | "Agilité"
   | "Intelligence"
+  | "Puissance"
+  | "Critique"
+  |"Dommages"
   | "Chance"
   | "Sagesse"
   | "PA"
