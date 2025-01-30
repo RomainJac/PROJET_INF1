@@ -1,3 +1,5 @@
+import {CHARACTERISTIC_CODE_MAPPING} from "../mapper/CharacteristicCodeMapping";
+
 export interface Item {
   id: string;
   name: string;
@@ -11,7 +13,6 @@ export interface Item {
 }
 
 export interface CharacteristicLine {
-  type: "BONUS" | "MALUS";
   min: number;
   max: number;
   isPercentage?: boolean;
@@ -29,42 +30,7 @@ export type EffectType =
   | "Vol de vie"
   | "Dommage"
 
-export type CharacteristicType =
-  | "Vitalité"
-  | "Force"
-  | "Agilité"
-  | "Intelligence"
-  | "Puissance"
-  | "Critique"
-  |"Dommages"
-  | "Chance"
-  | "Sagesse"
-  | "PA"
-  | "PM"
-  | "PO"
-  | "Invocation"
-  | "Initiative"
-  | "Prospection"
-  | "Tacle"
-  | "Fuite"
-  | "Esquive PA"
-  | "Esquive PM"
-  | "Résistance Neutre"
-  | "Résistance Terre"
-  | "Résistance Feu"
-  | "Résistance Eau"
-  | "Résistance Air"
-  | "Résistance Critique"
-  | "Résistance Poussée"
-  | "Résistance Distance"
-  | "Résistance Mêlée"
-  | "Résistance Sorts"
-  | "Résistance Corps à corps"
-  | "Dommage Neutre"
-  | "Dommage Eau"
-  | "Dommage Air"
-  | "Dommage Feu"
-  | "Dommage Terre";
+export type CharacteristicType = (typeof CHARACTERISTIC_CODE_MAPPING)[keyof typeof CHARACTERISTIC_CODE_MAPPING];
 
 export type ItemType =
   | "Amulette"

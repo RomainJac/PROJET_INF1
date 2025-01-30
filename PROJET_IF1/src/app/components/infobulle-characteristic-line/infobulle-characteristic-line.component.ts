@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { CharacteristicLine } from "../../data/model/Item";
+import {Component, Input} from '@angular/core';
+import {CharacteristicLine} from "../../data/model/Item";
 
 @Component({
   selector: 'app-infobulle-characteristic-line',
@@ -10,7 +10,6 @@ import { CharacteristicLine } from "../../data/model/Item";
 })
 export class InfobulleCharacteristicLineComponent {
   @Input() characteristic: CharacteristicLine = {
-    type: "BONUS",
     min: 0,
     max: 0,
     characteristicType: "Vitalité",
@@ -18,15 +17,9 @@ export class InfobulleCharacteristicLineComponent {
   };
 
   displayCharacteristic() {
-    const { min, max, characteristicType, type, isPercentage } = this.characteristic;
-
+    const {min, max, characteristicType, isPercentage} = this.characteristic;
     const valueSuffix = isPercentage ? '%' : '';
 
-    if (type === "MALUS") {
-      return min === max
-        ? `-${min}${valueSuffix} ${characteristicType}`
-        : `-${min}${valueSuffix} à -${max}${valueSuffix} ${characteristicType}`;
-    }
     return min === max
       ? `${min}${valueSuffix} ${characteristicType}`
       : `${min}${valueSuffix} à ${max}${valueSuffix} ${characteristicType}`;

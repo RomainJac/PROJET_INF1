@@ -1,6 +1,6 @@
 <li>
-  <span [class.bonus]="characteristic.type === 'BONUS'"
-        [class.malus]="characteristic.type === 'MALUS'">
+  <span [class.bonus]="characteristic.max > 0"
+        [class.malus]="characteristic.min < 0">
     {{ displayCharacteristic() }}
   </span>
 </li>

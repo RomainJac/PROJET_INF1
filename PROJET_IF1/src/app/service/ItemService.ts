@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {CharacteristicLine, CharacteristicType, Condition, EffectType, Item} from "../data/model/Item";
+import {CharacteristicLine, EffectType, Item} from "../data/model/Item";
+import {CHARACTERISTIC_CODE_MAPPING, WEAPON_DAMAGE_CODE_MAPPING} from "../data/mapper/CharacteristicCodeMapping";
+import {EffectResponse} from "../data/model/DofusDbResponse";
 
 @Injectable({
   providedIn: 'root',
@@ -13,71 +15,12 @@ export class ItemService {
   constructor(private http: HttpClient) {
   }
 
-  private static mapCharacteristics(effects: any[]): CharacteristicLine[] {
-
-    const characteristicMapping = {
-      0: 'Points de vie',
-      1: "PA",
-      10: 'Force',
-      11: 'Vitalité',
-      12: 'Sagesse',
-      120: 'Dommages Distance',
-      121: 'Résistances Distance',
-      122: 'Dommages d\'Arme',
-      123: 'Dommages aux Sorts',
-      124: 'Résistances Mêlée',
-      125: 'Dommages Mêlée',
-      13: 'Chance',
-      14: 'Agilité',
-      15: 'Intelligence',
-      16: 'Dommages',
-      18: 'Critique',
-      19: "PO",
-      23: "PM",
-      25: "Puissance",
-      26: "Invocation",
-      27: 'Esquive PA',
-      28: 'Esquive PM',
-      33: 'Résistance Neutre',
-      34: 'Résistance Terre',
-      35: 'Résistance Feu',
-      36: 'Résistance Eau',
-      37: 'Résistance Air',
-      40: 'Pods',
-      44: 'Initiative',
-      48: 'Prospection',
-      49: 'Soins',
-      50: 'Renvoi',
-      54: 'Résistance Terre',
-      55: 'Résistance Feu',
-      56: 'Résistance Eau',
-      57: 'Résistance Air',
-      58: 'Résistance Neutre',
-      69: 'Puissance Pièges',
-      70: 'Dommages Pièges',
-      79: 'Tacle',
-      82: 'Retrait PA',
-      83: 'Retrait PM',
-      84: 'Dommage Poussée',
-      85: 'Résistance Poussée',
-      86: 'Dommages critiques',
-      87: 'Résistances critiques',
-      88: 'Dommages Terre',
-      89: 'Dommages Feu',
-      90: 'Dommages Eau',
-      91: 'Dommages Air',
-      92: 'Dommages Neutre'
-    };
-
+  private static mapCharacteristics(effects: EffectResponse[]): CharacteristicLine[] {
     return effects
       .map(effect => {
-
-        // @ts-ignore
-        const characteristicName = characteristicMapping[effect.characteristic]|| "Unknown";
-        console.log(`Mapping characteristic: ${JSON.stringify(effect)} -> ${characteristicName}`);
-
+        const characteristicName = effect.category === 2 ? WEAPON_DAMAGE_CODE_MAPPING[effect.effectId] : CHARACTERISTIC_CODE_MAPPING[effect.characteristic] || "Unknown";
+        console.log(`Mapping characteristic: ${JSON.stringify(effect)} -> ${characteristicName} `);
         return {
-          type: effect.category,
           min: effect.from || 0,
           max: effect.to || effect.from || 0,
           characteristicType: characteristicName,
@@ -102,35 +45,6 @@ export class ItemService {
       console.error('Error fetching effect:', error);
       return null;
     }
-  }
-
-  private static parseCriteria(criteria: string): Condition[] {
-
-    console.log(`Parsing criteria: ${criteria}`);
-    const match = criteria.match(/([A-Z]+)([><=])(\d+)/);
-    if (!match) return [];
-    console.log(`Parsed criteria match: ${JSON.stringify(match)}`);
-
-    return [{
-      characteristic: ItemService.mapCharacteristicType(match[1]),
-      operator: match[2] as ">=" | "<=" | "=",
-      min: parseInt(match[3]),
-    }];
-  }
-
-  private static mapCharacteristicType(type: string): CharacteristicType {
-    const mapping: Record<string, CharacteristicType> = {
-      "CI": "Intelligence",
-      "CH": "Chance",
-      "VI": "Vitalité",
-      "AG": "Agilité",
-      "FO": "Force",
-      "SA": "Sagesse",
-      "PA": "PA",
-      "PM": "PM",
-    };
-    console.log(`Mapping characteristic type: ${type} to ${mapping[type] || 'Vitalité'}`);
-    return mapping[type] || "Vitalité";
   }
 
   private static mapEffectType(type: string): EffectType {
@@ -195,7 +109,7 @@ export class ItemService {
       pods: apiItem.realWeight,
       description: apiItem.description?.fr || "",
       characteristics: ItemService.mapCharacteristics(apiItem.effects),
-      conditions: ItemService.parseCriteria(apiItem.criteria),
+      conditions: []
     };
   }
 }
