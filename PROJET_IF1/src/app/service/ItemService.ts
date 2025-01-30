@@ -22,7 +22,6 @@ export class ItemService {
       .filter(effect => effect.category === 2) // Seulement les effets d'arme
       .map(effect => {
         const characteristicName = WEAPON_DAMAGE_CODE_MAPPING[effect.effectId] || "Unknown";
-        console.log(`Mapping weapon effect: ${JSON.stringify(effect)} -> ${characteristicName}`);
         return {
           min: effect.from || 0,
           max: effect.to || effect.from || 0,
@@ -37,7 +36,6 @@ export class ItemService {
       .filter(effect => effect.category !== 2) // Pas les effets d'arme
       .map(effect => {
         const characteristicName = CHARACTERISTIC_CODE_MAPPING[effect.characteristic] || "Unknown";
-        console.log(`Mapping characteristic: ${JSON.stringify(effect)} -> ${characteristicName}`);
         return {
           min: effect.from || 0,
           max: effect.to || effect.from || 0,
@@ -55,23 +53,6 @@ export class ItemService {
     };
   }
 
-  private static async fetchEffectById(effectId: number): Promise<any> {
-    const url = `https://api.dofusdb.fr/effects/${effectId}`;
-    try {
-      console.log(`Fetching effect details from: ${url}`);
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Effect fetch failed');
-      }
-      const data = await response.json();
-      console.log(`Effect data fetched successfully: ${JSON.stringify(data)}`);
-      return data;
-    } catch (error) {
-      console.error('Error fetching effect:', error);
-      return null;
-    }
-  }
-
   findById(itemId: string): Observable<Item> {
     const url = `${this.API_URL}/${itemId}`;
     return this.http.get<any>(url).pipe(
@@ -79,23 +60,24 @@ export class ItemService {
     );
   }
 
-  public searchItems(search: string = '', page: number = 1, limit: number = 10): Observable<Item[]> {
+  public searchItems(search: string = '', page: number = 1, limit: number = 40): Observable<Item[]> {
     const skip = (page - 1) * limit;
 
+    // URL de base avec les filtres initiaux
+    let url = `${this.API_URL}?typeId[$ne]=203&$sort=-level&level[$gte]=0&level[$lte]=200&$skip=${skip}&$limit=${limit}&lang=fr`;
 
-    let url = `${this.API_URL}?typeId[$ne]=203&$sort=-level&level[$gte]=0&level[$lte]=200&$skip=${skip}&lang=fr`;
-
-
+    // Ajout des types d'ID dans l'URL
     const typeIds = [1, 9, 2, 3, 4, 5, 6, 7, 8, 19, 22, 271, 11, 82, 17, 10, 16];
     typeIds.forEach(id => url += `&typeId[$in][]=${id}`);
 
-
+    // Si un terme de recherche est fourni, l'ajouter à l'URL
     if (search.trim()) {
       url += `&slug.fr[$search]=${encodeURIComponent(search)}`;
     }
 
     console.log(`Searching items with URL: ${url}`);
 
+    // Effectuer la requête HTTP GET et mapper la réponse
     return this.http.get<any>(url).pipe(
       map((response) => {
         console.log(`API response: ${JSON.stringify(response)}`);
@@ -105,7 +87,7 @@ export class ItemService {
   }
 
   private mapToItem(apiItem: DofusDbItemResponse): Item {
-    console.log(`Mapping item: ${JSON.stringify(apiItem)}`);
+    //console.log(`Mapping item: ${JSON.stringify(apiItem)}`);
     const { characteristicLines, weaponEffectLines } = ItemService.mapCharacteristics(apiItem.effects);
 
     return {

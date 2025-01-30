@@ -5,26 +5,47 @@ import {SearchBarComponent} from "../../components/search-bar/search-bar.compone
 import {ItemListComponent} from "../../components/item-list/item-list.component";
 import {Item} from "../../data/model/Item";
 import {ItemService} from "../../service/ItemService";
-import {Observable} from "rxjs";
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-item-search-page',
   standalone: true,
-  imports: [CommonModule, PageTemplateComponent, SearchBarComponent, ItemListComponent],
+  imports: [CommonModule, PageTemplateComponent, SearchBarComponent, ItemListComponent, InfiniteScrollModule],
   templateUrl: './item-search-page.component.html',
-  styleUrl: './item-search-page.component.css'
+  styleUrls: ['./item-search-page.component.css']
 })
-export class ItemSearchPageComponent implements OnInit{
-  items: Observable<Item[]> = new Observable<Item[]>();
+export class ItemSearchPageComponent implements OnInit {
+  protected items: Item[] = [];
+  protected currentPage: number = 1;
+  protected isLoading: boolean = false;
+  protected query: string = '';
 
-  constructor(private itemService:ItemService) {
+  constructor(private itemService: ItemService) {
   }
 
   onSearch(query: string): void {
-    this.items = this.itemService.searchItems(query)
+    this.query = query;
+    this.currentPage = 1;
+    this.items = [];
+    this.fetchItems(this.query);
   }
 
   ngOnInit(): void {
-    this.items = this.itemService.searchItems()
+    this.fetchItems();
+  }
+
+  fetchItems(query: string = ''): void {
+    if (this.isLoading) return;
+    this.isLoading = true;
+
+    this.itemService.searchItems(query, this.currentPage).subscribe((newItems) => {
+      this.items = [...this.items, ...newItems];
+      this.currentPage++;
+      this.isLoading = false;
+    });
+  }
+
+  onScroll(): void {
+    this.fetchItems(this.query);
   }
 }

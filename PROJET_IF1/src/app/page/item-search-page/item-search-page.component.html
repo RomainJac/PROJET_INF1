@@ -1,4 +1,15 @@
 <app-page-template>
   <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <app-item-list [items]="items | async"></app-item-list>
+
+  <!-- Infinite scroll list -->
+  <app-item-list
+    [items]="items"
+    infiniteScroll
+    (scrolled)="onScroll()"
+    [infiniteScrollUpDistance]="1.5"
+    [infiniteScrollThrottle]="300"
+    [infiniteScrollDistance]="0.8">
+  </app-item-list>
+
+  <button (click)="fetchItems(this.query)" *ngIf="!isLoading">Fetch More</button>
 </app-page-template>

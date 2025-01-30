@@ -41,7 +41,6 @@ export class ConditionParser {
     // Maintenant, on applique les OR entre chaque groupe d'ET.
     return orConditions.flat().map((cond, index, arr) => {
       if (index < orConditions.length - 1 && cond) cond.logicalOperator = "OU";  // Applique un OR entre chaque condition du tableau.
-      console.log(cond);
       return cond;
     });
   }

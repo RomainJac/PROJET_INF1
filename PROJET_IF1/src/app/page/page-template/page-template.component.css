@@ -2,3 +2,14 @@
   padding: 24px;
   min-height: calc(96vh - 120px);
 }
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1; /* This ensures the content area takes up the available space */
+  padding: 24px; /* Or adjust as necessary */
+  overflow-y: auto; /* To allow scrolling inside the content area */
+}
