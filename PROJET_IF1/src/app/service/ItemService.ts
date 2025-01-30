@@ -60,7 +60,7 @@ export class ItemService {
     );
   }
 
-  public searchItems(search: string = '', page: number = 1, limit: number = 40): Observable<Item[]> {
+  public searchItems(search: string = '', page: number = 1, limit: number = 50): Observable<Item[]> {
     const skip = (page - 1) * limit;
 
     // URL de base avec les filtres initiaux
