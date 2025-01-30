@@ -2,3 +2,12 @@ app-search-bar {
   display: block;
   margin-bottom: 16px;
 }
+
+.item-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  height: 105%;
+  width: 100%;
+  justify-content: center;
+}
