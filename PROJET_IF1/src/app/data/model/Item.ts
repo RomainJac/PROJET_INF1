@@ -21,15 +21,10 @@ export interface CharacteristicLine {
 
 export interface Condition {
   characteristic: CharacteristicType;
-  min?: number;
-  max?: number;
-  operator: ">=" | "<=" | "=";
+  number?: number;
+  operator: ">" | "<";
+  logicalOperator?: "ET" | "OU";
 }
-
-export type EffectType =
-  | "Vol de vie"
-  | "Dommage"
-
 export type CharacteristicType = (typeof CHARACTERISTIC_CODE_MAPPING)[keyof typeof CHARACTERISTIC_CODE_MAPPING];
 
 export type ItemType =
@@ -44,4 +39,5 @@ export type ItemType =
   | "Familier"
   | "Sac à dos"
   | "Trophée"
+  | "UNKNOWN"
   | "Arme";

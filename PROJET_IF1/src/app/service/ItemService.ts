@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {CharacteristicLine, EffectType, Item} from "../data/model/Item";
+import {CharacteristicLine, Item, ItemType} from "../data/model/Item";
 import {CHARACTERISTIC_CODE_MAPPING, WEAPON_DAMAGE_CODE_MAPPING} from "../data/mapper/CharacteristicCodeMapping";
-import {EffectResponse} from "../data/model/DofusDbResponse";
+import {DofusDbItemResponse, EffectResponse} from "../data/model/DofusDbResponse";
+import {ConditionParser} from "../data/mapper/ConditionParser";
 
 @Injectable({
   providedIn: 'root',
@@ -47,25 +48,6 @@ export class ItemService {
     }
   }
 
-  private static mapEffectType(type: string): EffectType {
-    if (type.includes("Vol de vie")) return "Vol de vie";
-    if (type.includes("Dommage")) return "Dommage";
-    console.log(`Mapping effect type: ${type}`);
-    return "Dommage";
-  }
-
-  private static mapElement(type: string): "Neutre" | "Terre" | "Feu" | "Eau" | "Air" {
-    const elements: Record<string, "Neutre" | "Terre" | "Feu" | "Eau" | "Air"> = {
-      "Neutral": "Neutre",
-      "Earth": "Terre",
-      "Fire": "Feu",
-      "Water": "Eau",
-      "Air": "Air",
-    };
-    console.log(`Mapping element: ${type} to ${elements[type] || "Neutre"}`);
-    return elements[type] || "Neutre";
-  }
-
   findById(itemId: string): Observable<Item> {
     const url = `${this.API_URL}/${itemId}`;
     return this.http.get<any>(url).pipe(
@@ -73,7 +55,7 @@ export class ItemService {
     );
   }
 
-  public searchItems(search: string = '', page: number = 1, limit: number = 50): Observable<Item[]> {
+  public searchItems(search: string = '', page: number = 1, limit: number = 10): Observable<Item[]> {
     const skip = (page - 1) * limit;
 
 
@@ -98,18 +80,18 @@ export class ItemService {
     );
   }
 
-  private mapToItem(apiItem: any): Item {
+  private mapToItem(apiItem: DofusDbItemResponse): Item {
     console.log(`Mapping item: ${JSON.stringify(apiItem)}`);
     return {
       id: apiItem.id.toString(),
       name: apiItem.name.fr,
       level: apiItem.level,
       imageUrl: apiItem.img,
-      type: apiItem.superType?.name?.fr || apiItem.name.fr,
+      type: (apiItem.superType?.name?.fr ?? "UNKNOWN") as ItemType,
       pods: apiItem.realWeight,
       description: apiItem.description?.fr || "",
       characteristics: ItemService.mapCharacteristics(apiItem.effects),
-      conditions: []
+      conditions: ConditionParser.mapCondition(apiItem.criteria)
     };
   }
 }

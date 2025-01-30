@@ -61,6 +61,7 @@ export const CHARACTERISTIC_CODE_MAPPING: Record<number, string> = {
 
 export const WEAPON_DAMAGE_CODE_MAPPING: Record<number, string> = {
   100: 'Dégats Neutre',
+  101: 'PA',
   91: 'Vol Eau',
   92: 'Vol Terre',
   93: 'Vol Air',
@@ -69,5 +70,5 @@ export const WEAPON_DAMAGE_CODE_MAPPING: Record<number, string> = {
   96: 'Dégats Eau',
   97: "Dégats Terre",
   98: 'Dégats Air',
-  99: 'Dégats Feu',
-}
+  99: 'Dégats Feu'
+} as const;
