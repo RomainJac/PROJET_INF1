@@ -1,4 +1,4 @@
-import {CHARACTERISTIC_CODE_MAPPING} from "../mapper/CharacteristicCodeMapping";
+import {CHARACTERISTIC_CODE_MAPPING, WEAPON_DAMAGE_CODE_MAPPING} from "../mapper/CharacteristicCodeMapping";
 
 export interface Item {
   id: string;
@@ -10,6 +10,7 @@ export interface Item {
   pods: number;
   description?: string;
   conditions?: Condition[];
+  weaponEffects?: WeaponEffectLine[];
 }
 
 export interface CharacteristicLine {
@@ -19,14 +20,20 @@ export interface CharacteristicLine {
   characteristicType: CharacteristicType;
 }
 
+export interface WeaponEffectLine extends CharacteristicLine {
+  characteristicType: WeaponEffectType;
+  category: 2;
+}
+
 export interface Condition {
   characteristic: CharacteristicType;
   number?: number;
   operator: ">" | "<";
   logicalOperator?: "ET" | "OU";
 }
-export type CharacteristicType = (typeof CHARACTERISTIC_CODE_MAPPING)[keyof typeof CHARACTERISTIC_CODE_MAPPING];
 
+export type CharacteristicType = (typeof CHARACTERISTIC_CODE_MAPPING)[keyof typeof CHARACTERISTIC_CODE_MAPPING];
+export type WeaponEffectType = (typeof WEAPON_DAMAGE_CODE_MAPPING)[keyof typeof WEAPON_DAMAGE_CODE_MAPPING];
 export type ItemType =
   | "Amulette"
   | "Anneau"

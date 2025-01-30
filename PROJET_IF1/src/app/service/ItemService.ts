@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {CharacteristicLine, Item, ItemType} from "../data/model/Item";
+import {CharacteristicLine, Item, ItemType, WeaponEffectLine} from "../data/model/Item";
 import {CHARACTERISTIC_CODE_MAPPING, WEAPON_DAMAGE_CODE_MAPPING} from "../data/mapper/CharacteristicCodeMapping";
 import {DofusDbItemResponse, EffectResponse} from "../data/model/DofusDbResponse";
 import {ConditionParser} from "../data/mapper/ConditionParser";
@@ -16,20 +16,44 @@ export class ItemService {
   constructor(private http: HttpClient) {
   }
 
-  private static mapCharacteristics(effects: EffectResponse[]): CharacteristicLine[] {
+// Séparés selon leur type
+  private static mapWeaponEffectLines(effects: EffectResponse[]): WeaponEffectLine[] {
     return effects
+      .filter(effect => effect.category === 2) // Seulement les effets d'arme
       .map(effect => {
-        const characteristicName = effect.category === 2 ? WEAPON_DAMAGE_CODE_MAPPING[effect.effectId] : CHARACTERISTIC_CODE_MAPPING[effect.characteristic] || "Unknown";
-        console.log(`Mapping characteristic: ${JSON.stringify(effect)} -> ${characteristicName} `);
+        const characteristicName = WEAPON_DAMAGE_CODE_MAPPING[effect.effectId] || "Unknown";
+        console.log(`Mapping weapon effect: ${JSON.stringify(effect)} -> ${characteristicName}`);
         return {
           min: effect.from || 0,
           max: effect.to || effect.from || 0,
           characteristicType: characteristicName,
-          isPercentage: effect.category == 1
+          category: 2, // Pour signaler que c'est un effet d'arme
         };
       });
   }
 
+  private static mapCharacteristicLines(effects: EffectResponse[]): CharacteristicLine[] {
+    return effects
+      .filter(effect => effect.category !== 2) // Pas les effets d'arme
+      .map(effect => {
+        const characteristicName = CHARACTERISTIC_CODE_MAPPING[effect.characteristic] || "Unknown";
+        console.log(`Mapping characteristic: ${JSON.stringify(effect)} -> ${characteristicName}`);
+        return {
+          min: effect.from || 0,
+          max: effect.to || effect.from || 0,
+          characteristicType: characteristicName,
+          isPercentage: effect.category === 1,
+        };
+      });
+  }
+
+// Fonction principale qui appelle les deux
+  private static mapCharacteristics(effects: EffectResponse[]): { characteristicLines: CharacteristicLine[], weaponEffectLines: WeaponEffectLine[] } {
+    return {
+      characteristicLines: this.mapCharacteristicLines(effects),
+      weaponEffectLines: this.mapWeaponEffectLines(effects),
+    };
+  }
 
   private static async fetchEffectById(effectId: number): Promise<any> {
     const url = `https://api.dofusdb.fr/effects/${effectId}`;
@@ -82,6 +106,8 @@ export class ItemService {
 
   private mapToItem(apiItem: DofusDbItemResponse): Item {
     console.log(`Mapping item: ${JSON.stringify(apiItem)}`);
+    const { characteristicLines, weaponEffectLines } = ItemService.mapCharacteristics(apiItem.effects);
+
     return {
       id: apiItem.id.toString(),
       name: apiItem.name.fr,
@@ -90,8 +116,8 @@ export class ItemService {
       type: (apiItem.superType?.name?.fr ?? "UNKNOWN") as ItemType,
       pods: apiItem.realWeight,
       description: apiItem.description?.fr || "",
-      characteristics: ItemService.mapCharacteristics(apiItem.effects),
-      conditions: ConditionParser.mapCondition(apiItem.criteria)
+      characteristics: characteristicLines,
+      weaponEffects: weaponEffectLines,
+      conditions: ConditionParser.mapCondition(apiItem.criteria),
     };
-  }
-}
+  }}
