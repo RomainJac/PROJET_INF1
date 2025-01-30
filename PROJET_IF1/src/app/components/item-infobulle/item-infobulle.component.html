@@ -10,14 +10,16 @@
   <!-- Affichage de la description -->
   <app-infobulle-description [description]="item.description"></app-infobulle-description>
 
+  <!-- Affichage des effets d'armes -->
   <div class="weapon-effects" *ngIf="item.weaponEffects && item.weaponEffects.length > 0">
     <h4>Effets d'arme</h4>
     <ul>
-      <app-infobulle-characteristic-line *ngFor="let weaponEffect of item.weaponEffects"
-                                         [characteristic]="weaponEffect">
-      </app-infobulle-characteristic-line>
+      <li *ngFor="let weaponEffect of item.weaponEffects">
+        <app-infobulle-weapon-effect-line [weaponEffect]="weaponEffect"></app-infobulle-weapon-effect-line>
+      </li>
     </ul>
   </div>
+
   <!-- Affichage des caractéristiques classiques -->
   <div class="characteristics">
     <h4>Caractéristiques</h4>
@@ -27,8 +29,6 @@
       </app-infobulle-characteristic-line>
     </ul>
   </div>
-
-  <!-- Affichage des effets d'armes -->
 
   <!-- Affichage des conditions -->
   <app-infobulle-condition *ngIf="item.conditions" [conditions]="item.conditions">

@@ -26,7 +26,6 @@ export class ItemService {
           min: effect.from || 0,
           max: effect.to || effect.from || 0,
           characteristicType: characteristicName,
-          category: 2, // Pour signaler que c'est un effet d'arme
         };
       });
   }

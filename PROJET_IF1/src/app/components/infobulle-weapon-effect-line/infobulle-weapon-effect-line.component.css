@@ -1,0 +1,54 @@
+/* Neutral Damage */
+.neutral-damage {
+  color: #a9a9a9; /* Gray color for neutral damage */
+}
+
+/* PA Effects */
+.pa {
+  color: #ffd700; /* Gold for PA (Action Points) */
+}
+
+/* Water Steal */
+.water-steal {
+  color: #00bfff; /* Deep Sky Blue for water steal */
+}
+
+/* Earth Steal */
+.earth-steal {
+  color: #8b4513; /* Saddle Brown for earth steal */
+}
+
+/* Air Steal */
+.air-steal {
+  color: #87ceeb; /* Light Sky Blue for air steal */
+}
+
+/* Fire Steal */
+.fire-steal {
+  color: #ff4500; /* Orange Red for fire steal */
+}
+
+/* Neutral Steal */
+.neutral-steal {
+  color: #696969; /* Dim Gray for neutral steal */
+}
+
+/* Water Damage */
+.water-damage {
+  color: #1e90ff; /* Dodger Blue for water damage */
+}
+
+/* Earth Damage */
+.earth-damage {
+  color: #228b22; /* Forest Green for earth damage */
+}
+
+/* Air Damage */
+.air-damage {
+  color: #5f9ea0; /* Cadet Blue for air damage */
+}
+
+/* Fire Damage */
+.fire-damage {
+  color: #dc143c; /* Crimson for fire damage */
+}

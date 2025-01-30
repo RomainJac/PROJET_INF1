@@ -1,6 +1,6 @@
 .page-content {
   padding: 24px;
-  min-height: calc(96vh - 120px);
+  min-height: calc(150vh - 120px);
 }
 :host {
   display: flex;

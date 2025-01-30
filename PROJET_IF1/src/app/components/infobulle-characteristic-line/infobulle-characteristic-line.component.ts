@@ -16,7 +16,7 @@ export class InfobulleCharacteristicLineComponent {
     isPercentage: false
   };
 
-  displayCharacteristic() {
+  displayCharacteristic(): string {
     const {min, max, characteristicType, isPercentage} = this.characteristic;
     const valueSuffix = isPercentage ? '%' : '';
 

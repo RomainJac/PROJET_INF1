@@ -20,9 +20,10 @@ export interface CharacteristicLine {
   characteristicType: CharacteristicType;
 }
 
-export interface WeaponEffectLine extends CharacteristicLine {
+export interface WeaponEffectLine {
+  min: number;
+  max: number;
   characteristicType: WeaponEffectType;
-  category: 2;
 }
 
 export interface Condition {
