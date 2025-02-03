@@ -6,9 +6,6 @@
       <p>Niveau {{ item.level }}</p>
     </div>
   </div>
-
-  <app-infobulle-description [description]="item.description"></app-infobulle-description>
-
   <div class="weapon-effects" *ngIf="item.weaponEffects && item.weaponEffects.length > 0">
     <h4>Effets d'arme</h4>
     <ul>
