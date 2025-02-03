@@ -10,6 +10,7 @@ import {
 import {
   InfobulleCharacteristicLineComponent
 } from "../../components/infobulle-characteristic-line/infobulle-characteristic-line.component";
+import {ItemFavoriteButtonComponent} from "../../components/item-favorite-button/item-favorite-button.component";
 
 @Component({
   selector: 'app-item-details-page',
@@ -20,7 +21,8 @@ import {
     NgForOf,
     NgClass,
     InfobulleWeaponEffectLineComponent,
-    InfobulleCharacteristicLineComponent
+    InfobulleCharacteristicLineComponent,
+    ItemFavoriteButtonComponent
   ],
   templateUrl: './item-details-page.component.html',
   styleUrls: ['./item-details-page.component.css']

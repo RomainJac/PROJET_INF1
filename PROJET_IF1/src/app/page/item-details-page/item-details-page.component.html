@@ -1,4 +1,5 @@
 <app-page-template>
+  <div class="background">
   <button class="back-button" (click)="goBack()">&#x2B05; Retour</button>
   <div class="inventory-container">
     <div class="inventory-panel">
@@ -10,9 +11,12 @@
             <p class="item-level">Niveau {{ item.level }}</p>
           </div>
 
-          <button *ngIf="isLoggedIn" class="fav-button" (click)="toggleFavourite()">
-            <span [ngClass]="isLoggedIn && isFavourite ? 'heart-filled' : 'heart-outline'">❤️</span>
-          </button>
+          <app-item-favorite-button
+            [isLoggedIn]="isLoggedIn"
+            [isFavourite]="isFavourite"
+            (toggleFavourite)="toggleFavourite()">
+          </app-item-favorite-button>
+
         </div>
 
         <div class="item-description" *ngIf="item.description">
@@ -38,5 +42,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </app-page-template>

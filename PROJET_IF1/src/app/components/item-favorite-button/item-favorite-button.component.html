@@ -1,0 +1,3 @@
+<button *ngIf="isLoggedIn" class="btn btn-outline-danger fav-button" (click)="onToggle()">
+  <i class="bi" [ngClass]="isFavourite ? 'bi-heart-fill' : 'bi-heart'"></i>
+</button>
