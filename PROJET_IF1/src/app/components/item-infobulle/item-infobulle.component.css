@@ -5,7 +5,7 @@
   padding: 10px;
   border-radius: 5px;
   width: 250px;
-  font-size: 14px;
+  font-size: 12px;
   pointer-events: none;
   z-index: 1000;
 }
@@ -17,23 +17,31 @@
 }
 
 .item-icon {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 .description {
   font-style: italic;
   margin-bottom: 5px;
+  font-size: 11px;
 }
 
 .characteristics, .effects {
   margin-top: 10px;
+  font-size: 11px;
 }
 
 .bonus {
   color: lightgreen;
+  font-size: 11px;
 }
 
 .malus {
   color: red;
+  font-size: 11px;
+}
+
+h4 {
+  font-size: 20px;
 }

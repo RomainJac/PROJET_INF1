@@ -4,6 +4,12 @@ import { Item } from '../../data/model/Item';
 import { PageTemplateComponent } from '../page-template/page-template.component';
 import { NgIf, NgForOf, NgClass } from '@angular/common';
 import {ItemService} from "../../service/ItemService";
+import {
+  InfobulleWeaponEffectLineComponent
+} from "../../components/infobulle-weapon-effect-line/infobulle-weapon-effect-line.component";
+import {
+  InfobulleCharacteristicLineComponent
+} from "../../components/infobulle-characteristic-line/infobulle-characteristic-line.component";
 
 @Component({
   selector: 'app-item-details-page',
@@ -12,7 +18,9 @@ import {ItemService} from "../../service/ItemService";
     PageTemplateComponent,
     NgIf,
     NgForOf,
-    NgClass
+    NgClass,
+    InfobulleWeaponEffectLineComponent,
+    InfobulleCharacteristicLineComponent
   ],
   templateUrl: './item-details-page.component.html',
   styleUrls: ['./item-details-page.component.css']

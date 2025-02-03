@@ -1,30 +1,42 @@
 <app-page-template>
-  <button class="back-button" (click)="goBack()">Retour</button>
+  <button class="back-button" (click)="goBack()">&#x2B05; Retour</button>
+  <div class="inventory-container">
+    <div class="inventory-panel">
+      <div class="item-details" *ngIf="item">
+        <div class="item-header">
+          <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
+          <div class="item-info">
+            <h1 class="item-name">{{ item.name }}</h1>
+            <p class="item-level">Niveau {{ item.level }}</p>
+          </div>
 
-  <div class="item-details" *ngIf="item">
-    <div class="item-header">
-      <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
-      <div>
-        <h1>{{ item.name }}</h1>
-        <p>Niveau {{ item.level }}</p>
+          <button *ngIf="isLoggedIn" class="fav-button" (click)="toggleFavourite()">
+            <span [ngClass]="isLoggedIn && isFavourite ? 'heart-filled' : 'heart-outline'">❤️</span>
+          </button>
+        </div>
+
+        <div class="item-description" *ngIf="item.description">
+          <p>{{ item.description }}</p>
+        </div>
+
+        <div class="weapon-effects item-characteristics" *ngIf="item.weaponEffects && item.weaponEffects.length > 0">
+          <h3>Effets d'arme</h3>
+          <ul>
+            <li *ngFor="let weaponEffect of item.weaponEffects">
+              <app-infobulle-weapon-effect-line [weaponEffect]="weaponEffect"></app-infobulle-weapon-effect-line>
+            </li>
+          </ul>
+        </div>
+
+        <div class="item-characteristics" *ngIf="item.characteristics?.length">
+          <h3>Caractéristiques</h3>
+          <ul>
+            <li *ngFor="let characteristic of item.characteristics">
+              <app-infobulle-characteristic-line [characteristic]="characteristic"></app-infobulle-characteristic-line>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <button *ngIf="isLoggedIn" class="fav-button" (click)="toggleFavourite()">
-        <span [ngClass]="isFavourite ? 'heart-filled' : 'heart-outline'">❤️</span>
-      </button>
-    </div>
-
-    <div class="item-description" *ngIf="item.description">
-      <p>{{ item.description }}</p>
-    </div>
-
-    <div class="item-characteristics" *ngIf="item.characteristics?.length">
-      <h3>Caractéristiques</h3>
-      <ul>
-        <li *ngFor="let characteristic of item.characteristics">
-          {{ characteristic.characteristicType }}: {{ characteristic.min }} à {{ characteristic.max }}
-        </li>
-      </ul>
     </div>
   </div>
 </app-page-template>

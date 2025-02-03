@@ -7,7 +7,7 @@ app-search-bar {
   display: flex;
   flex-wrap: nowrap;
   overflow-y: scroll;
-  height: 105%;
+  height: 85%;
   width: 100%;
   justify-content: center;
 }

@@ -2,15 +2,13 @@
   <div class="infobulle-header">
     <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
     <div>
-      <h3>{{ item.name }}</h3>
+      <h4>{{ item.name }}</h4>
       <p>Niveau {{ item.level }}</p>
     </div>
   </div>
 
-  <!-- Affichage de la description -->
   <app-infobulle-description [description]="item.description"></app-infobulle-description>
 
-  <!-- Affichage des effets d'armes -->
   <div class="weapon-effects" *ngIf="item.weaponEffects && item.weaponEffects.length > 0">
     <h4>Effets d'arme</h4>
     <ul>
@@ -20,7 +18,6 @@
     </ul>
   </div>
 
-  <!-- Affichage des caractéristiques classiques -->
   <div class="characteristics">
     <h4>Caractéristiques</h4>
     <ul>
@@ -30,7 +27,6 @@
     </ul>
   </div>
 
-  <!-- Affichage des conditions -->
   <app-infobulle-condition *ngIf="item.conditions" [conditions]="item.conditions">
   </app-infobulle-condition>
 </div>

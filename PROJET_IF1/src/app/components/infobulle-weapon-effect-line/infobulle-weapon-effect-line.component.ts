@@ -1,13 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {WeaponEffectLine} from "../../data/model/Item";
-import {NgClass} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-infobulle-weapon-effect-line',
   standalone: true,
-  imports: [
-    NgClass
-  ],
+    imports: [
+        NgClass,
+        NgIf
+    ],
   templateUrl: './infobulle-weapon-effect-line.component.html',
   styleUrl: './infobulle-weapon-effect-line.component.css'
 })
@@ -19,10 +20,10 @@ export class InfobulleWeaponEffectLineComponent {
   };
 
   displayCharacteristic() {
-    const {min, max, characteristicType} = this.weaponEffect;
+    const { min, max, characteristicType } = this.weaponEffect;
     return min === max
-      ? `${min} ${characteristicType}`
-      : `${min} à ${max} ${characteristicType}`;
+        ? `<span class='value-bold'>${min}</span> ${characteristicType}`
+        : `<span class='value-bold'>${min}</span> à <span class='value-bold'>${max}</span> ${characteristicType}`;
   }
 
   getColorClass(): string {
