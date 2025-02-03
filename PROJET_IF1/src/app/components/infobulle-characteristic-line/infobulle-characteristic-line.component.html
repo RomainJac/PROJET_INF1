@@ -1,6 +1,5 @@
 <li>
-  <span [class.bonus]="characteristic.max > 0"
-        [class.malus]="characteristic.min < 0">
+  <span [ngClass]="getClassForCharacteristic()">
     {{ displayCharacteristic() }}
   </span>
 </li>

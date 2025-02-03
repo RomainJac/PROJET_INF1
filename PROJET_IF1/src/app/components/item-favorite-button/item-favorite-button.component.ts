@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
 
 @Component({
@@ -12,11 +12,11 @@ import {NgClass, NgIf} from "@angular/common";
   styleUrl: './item-favorite-button.component.css'
 })
 export class ItemFavoriteButtonComponent {
-  @Input() isLoggedIn: boolean = false;
-  @Input() isFavourite: boolean = false;
-  @Output() toggleFavourite = new EventEmitter<void>();
+  @Input() protected isLoggedIn: boolean = false;
+  @Input() protected isFavourite: boolean = false;
+  @Output() protected toggleFavourite : EventEmitter<void> = new EventEmitter<void>();
 
-  onToggle() {
+  protected onToggle() {
     this.toggleFavourite.emit();
   }
 }
