@@ -6,8 +6,12 @@ app-search-bar {
 .item-list {
   display: flex;
   flex-wrap: nowrap;
-  overflow-y: scroll;
-  height: 85%;
-  width: 100%;
   justify-content: center;
+}
+
+.search-container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }

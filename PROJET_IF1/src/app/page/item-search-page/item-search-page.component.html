@@ -1,13 +1,15 @@
 <app-page-template>
-  <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <div
-    class="item-list"
-    infiniteScroll
-    [infiniteScrollDistance]="7"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()"
-    [scrollWindow]="false"
-  >
-    <app-item-list [items]="items"></app-item-list>
+  <div class="search-container">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    <div
+      class="item-list"
+      infiniteScroll
+      [infiniteScrollDistance]="7"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      [scrollWindow]="true"
+    >
+      <app-item-list [items]="items"></app-item-list>
+    </div>
   </div>
 </app-page-template>

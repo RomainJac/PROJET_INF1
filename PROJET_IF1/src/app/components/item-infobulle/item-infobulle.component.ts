@@ -17,9 +17,9 @@ import {InfobulleConditionComponent} from "../infobulle-condition/infobulle-cond
   styleUrl: './item-infobulle.component.css'
 })
 export class ItemInfobulleComponent {
-  @Input() protected x: number = 0;
-  @Input() protected y: number = 0;
-  @Input() protected item?: Item;
+  @Input() x: number = 0;
+  @Input() y: number = 0;
+  @Input() item?: Item;
 
   private margin = 50;
 

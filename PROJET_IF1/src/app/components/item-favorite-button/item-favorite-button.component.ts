@@ -12,8 +12,8 @@ import {NgClass, NgIf} from "@angular/common";
   styleUrl: './item-favorite-button.component.css'
 })
 export class ItemFavoriteButtonComponent {
-  @Input() protected isLoggedIn: boolean = false;
-  @Input() protected isFavourite: boolean = false;
+  @Input() isLoggedIn: boolean = false;
+  @Input() isFavourite: boolean = false;
   @Output() protected toggleFavourite : EventEmitter<void> = new EventEmitter<void>();
 
   protected onToggle() {
