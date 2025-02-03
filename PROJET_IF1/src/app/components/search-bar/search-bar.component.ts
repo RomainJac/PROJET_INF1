@@ -11,12 +11,12 @@ import {FormsModule} from "@angular/forms";
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  @Input() placeholder: string = 'Rechercher...';
-  @Output() search = new EventEmitter<string>();
+  @Input() public placeholder: string = 'Rechercher...';
+  @Output() private search = new EventEmitter<string>();
 
   inputValue: string = '';
 
-  onSearch(event: Event): void {
+  protected onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     this.search.emit(inputElement.value);
   }

@@ -1,14 +1,13 @@
-<div *ngIf="conditions && conditions.length > 0">
+<div *ngIf="hasConditions()">
   <h4>Conditions</h4>
   <div>
     <ng-container *ngFor="let condition of conditions; let i = index">
-      <!-- Affichage de la caractéristique et de la valeur -->
-      <span>{{ condition.characteristic }} {{ condition.operator }} {{ condition.number }}</span>
+      <span>{{ getConditionDisplayText(condition) }}</span>
 
-      <!-- Ajouter l'opérateur logique "AND" ou "OR" entre les conditions -->
-      <span *ngIf="i < conditions.length - 1">
-        {{ condition.logicalOperator }}
+      <span *ngIf="getLogicalOperator(i)">
+        {{ getLogicalOperator(i) }}
       </span>
+      <br/>
     </ng-container>
   </div>
 </div>

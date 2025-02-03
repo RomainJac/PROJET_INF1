@@ -13,20 +13,12 @@ import {NgClass, NgIf} from "@angular/common";
   styleUrl: './infobulle-weapon-effect-line.component.css'
 })
 export class InfobulleWeaponEffectLineComponent {
-  @Input() weaponEffect: WeaponEffectLine = {
+  @Input() public weaponEffect: WeaponEffectLine = {
     min: 0,
     max: 0,
     characteristicType: "Dégats Neutre",
   };
-
-  displayCharacteristic() {
-    const { min, max, characteristicType } = this.weaponEffect;
-    return min === max
-        ? `<span class='value-bold'>${min}</span> ${characteristicType}`
-        : `<span class='value-bold'>${min}</span> à <span class='value-bold'>${max}</span> ${characteristicType}`;
-  }
-
-  getColorClass(): string {
+  protected getColorClass(): string {
     const colorMapping: Record<string, string> = {
       "Dégats Neutre": "neutral-damage",
       "PA": "pa",

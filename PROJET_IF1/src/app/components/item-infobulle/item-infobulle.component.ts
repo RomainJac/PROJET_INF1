@@ -17,17 +17,13 @@ import {InfobulleConditionComponent} from "../infobulle-condition/infobulle-cond
   styleUrl: './item-infobulle.component.css'
 })
 export class ItemInfobulleComponent {
-  @Input() x: number = 0;
-  @Input() y: number = 0;
-  @Input() item?: Item;
+  @Input() protected x: number = 0;
+  @Input() protected y: number = 0;
+  @Input() protected item?: Item;
 
   private margin = 50;
 
   constructor() {}
-
-  ngOnChanges() {
-    this.adjustTooltipPosition();
-  }
 
   private adjustTooltipPosition() {
     setTimeout(() => {
@@ -45,7 +41,6 @@ export class ItemInfobulleComponent {
         newX = viewportWidth - rect.width - this.margin ;
       }
 
-      // Adjust bottom overflow
       if (this.y + rect.height + this.margin > viewportHeight) {
         newY = viewportHeight - rect.height - this.margin;
       }

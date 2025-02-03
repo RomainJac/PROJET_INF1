@@ -11,5 +11,5 @@ import {Item} from "../../data/model/Item";
   styleUrl: './item-list.component.css'
 })
 export class ItemListComponent {
-  @Input() items: Item[] | null = [];
+  @Input() public items: Item[] | null = [];
 }

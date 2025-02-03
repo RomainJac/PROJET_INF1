@@ -16,7 +16,6 @@ export class ItemService {
   constructor(private http: HttpClient) {
   }
 
-// Séparés selon leur type
   private static mapWeaponEffectLines(effects: EffectResponse[]): WeaponEffectLine[] {
     return effects
       .filter(effect => effect.category === 2) // Seulement les effets d'arme
@@ -45,7 +44,10 @@ export class ItemService {
   }
 
 // Fonction principale qui appelle les deux
-  private static mapCharacteristics(effects: EffectResponse[]): { characteristicLines: CharacteristicLine[], weaponEffectLines: WeaponEffectLine[] } {
+  private static mapCharacteristics(effects: EffectResponse[]): {
+    characteristicLines: CharacteristicLine[],
+    weaponEffectLines: WeaponEffectLine[]
+  } {
     return {
       characteristicLines: this.mapCharacteristicLines(effects),
       weaponEffectLines: this.mapWeaponEffectLines(effects),
@@ -74,12 +76,10 @@ export class ItemService {
       url += `&slug.fr[$search]=${encodeURIComponent(search)}`;
     }
 
-    console.log(`Searching items with URL: ${url}`);
 
     // Effectuer la requête HTTP GET et mapper la réponse
     return this.http.get<any>(url).pipe(
       map((response) => {
-        console.log(`API response: ${JSON.stringify(response)}`);
         return response.data.map(this.mapToItem);
       })
     );
@@ -87,7 +87,7 @@ export class ItemService {
 
   private mapToItem(apiItem: DofusDbItemResponse): Item {
     //console.log(`Mapping item: ${JSON.stringify(apiItem)}`);
-    const { characteristicLines, weaponEffectLines } = ItemService.mapCharacteristics(apiItem.effects);
+    const {characteristicLines, weaponEffectLines} = ItemService.mapCharacteristics(apiItem.effects);
 
     return {
       id: apiItem.id.toString(),
@@ -101,4 +101,5 @@ export class ItemService {
       weaponEffects: weaponEffectLines,
       conditions: ConditionParser.mapCondition(apiItem.criteria),
     };
-  }}
+  }
+}
