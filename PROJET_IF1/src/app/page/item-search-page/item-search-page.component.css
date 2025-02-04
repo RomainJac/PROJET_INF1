@@ -1,12 +1,14 @@
 app-search-bar {
   display: block;
-  margin-bottom: 16px;
 }
 
 .item-list {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  background: linear-gradient(180deg, #3b2f2f, #8b5e3b, #d2a679);
+  padding-top: 20px;
+  min-height: 700px;
 }
 
 .search-container {
@@ -15,3 +17,5 @@ app-search-bar {
   justify-content: center;
   margin-bottom: 16px;
 }
+
+

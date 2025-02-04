@@ -3,7 +3,6 @@
   grid-template-columns: repeat(5, 1fr);
   width: 750px;
   gap: 10px;
-
   padding: 15px;
   background: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
   border: 5px solid #9C6B3F;
@@ -14,7 +13,6 @@
 .item-icon {
   width: 80px;
   height: 80px;
-  background: url('https://www.transparenttextures.com/patterns/dark-wood.png');
   border: 3px solid #D4AF37;
   border-radius: 8px;
   display: flex;

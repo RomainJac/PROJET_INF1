@@ -1,7 +1,12 @@
 .footer {
   border-top: 2px solid #444;
   background-color: #1c1e21;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
+
 
 .footer .container-fluid {
   padding-left: 2rem;
