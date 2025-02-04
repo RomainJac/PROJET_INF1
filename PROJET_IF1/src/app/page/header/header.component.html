@@ -8,7 +8,7 @@
     </div>
     <nav class="d-flex">
       <a routerLink="/items" routerLinkActive="active" class="nav-link-box">Liste items</a>
-      <a class="nav-link-box auth" (click)="handleAuth()">{{ isLoggedIn ? 'Déconnexion' : 'Connexion' }}</a>
+      <a class="nav-link-box auth" (click)="handleAuth()">{{ checkLoginStatus() ? 'Déconnexion' : 'Connexion' }}</a>
     </nav>
   </div>
 </header>

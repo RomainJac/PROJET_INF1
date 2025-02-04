@@ -10,20 +10,17 @@ import {Router, RouterModule} from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  isLoggedIn = false;
+  private isLoggedIn: boolean = false;
 
   constructor(private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.checkLoginStatus();
-  }
-
-  checkLoginStatus(): void {
+  protected checkLoginStatus(): boolean {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    return this.isLoggedIn;
   }
 
-  handleAuth(): void {
+  protected handleAuth(): void {
     if (this.isLoggedIn) {
       localStorage.removeItem('isLoggedIn');
       this.isLoggedIn = false;

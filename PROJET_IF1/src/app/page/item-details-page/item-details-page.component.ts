@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Item } from '../../data/model/Item';
-import { PageTemplateComponent } from '../page-template/page-template.component';
-import { NgIf, NgForOf, NgClass } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Item} from '../../data/model/Item';
+import {PageTemplateComponent} from '../page-template/page-template.component';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {ItemService} from "../../service/ItemService";
 import {
   InfobulleWeaponEffectLineComponent
@@ -28,15 +28,16 @@ import {ItemFavoriteButtonComponent} from "../../components/item-favorite-button
   styleUrls: ['./item-details-page.component.css']
 })
 export class ItemDetailsPageComponent implements OnInit {
-  item: Item | undefined;
-  isLoggedIn: boolean = false;
-  isFavourite: boolean = false;
+  protected item: Item | undefined;
+  protected isLoggedIn: boolean = false;
+  protected isFavourite: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private itemService: ItemService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -51,11 +52,11 @@ export class ItemDetailsPageComponent implements OnInit {
     }
   }
 
-  goBack(): void {
+  protected goBack(): void {
     this.router.navigate(['/items']);
   }
 
-  toggleFavourite(): void {
+  protected toggleFavourite(): void {
     if (!this.item) return;
 
     const itemId = this.item.id.toString();

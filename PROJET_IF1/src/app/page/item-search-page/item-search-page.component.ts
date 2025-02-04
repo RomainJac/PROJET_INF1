@@ -23,18 +23,22 @@ export class ItemSearchPageComponent implements OnInit {
   constructor(private itemService: ItemService) {
   }
 
-  onSearch(query: string): void {
+  ngOnInit(): void {
+    this.fetchItems();
+  }
+
+  protected onSearch(query: string): void {
     this.query = query;
     this.currentPage = 1;
     this.items = [];
     this.fetchItems(this.query);
   }
 
-  ngOnInit(): void {
-    this.fetchItems();
+  protected onScroll(): void {
+    this.fetchItems(this.query);
   }
 
-  fetchItems(query: string = ''): void {
+  private fetchItems(query: string = ''): void {
     if (this.isLoading) return;
     this.isLoading = true;
 
@@ -43,9 +47,5 @@ export class ItemSearchPageComponent implements OnInit {
       this.currentPage++;
       this.isLoading = false;
     });
-  }
-
-  onScroll(): void {
-    this.fetchItems(this.query);
   }
 }
