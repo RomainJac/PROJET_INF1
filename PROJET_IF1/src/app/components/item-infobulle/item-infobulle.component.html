@@ -1,5 +1,5 @@
-<div class="infobulle" *ngIf="item" [style.left.px]="x" [style.top.px]="y">
-  <div class="infobulle-header">
+<div #tooltip class="infobulle" *ngIf="item" [style.left.px]="x" [style.top.px]="y">
+<div class="infobulle-header">
     <img [src]="item.imageUrl" [alt]="item.name" class="item-icon">
     <div>
       <h4>{{ item.name }}</h4>
