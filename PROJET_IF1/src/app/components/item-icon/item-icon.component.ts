@@ -32,6 +32,10 @@ export class ItemIconComponent {
 
   showTooltip(event: MouseEvent): void {
     this.showInfobulle = true;
+    this.updateTooltipPosition(event);
+  }
+
+  updateTooltipPosition(event: MouseEvent) {
     this.tooltipX = event.clientX + 10;
     this.tooltipY = event.clientY + 10;
   }

@@ -1,6 +1,7 @@
 <div class="item-icon-container"
      (mouseenter)="showTooltip($event)"
      (mouseleave)="hideTooltip()"
+     (mousemove)="updateTooltipPosition($event)"
      (click)="onIconClick()">
   <img [src]="item?.imageUrl" [alt]="item?.name" class="item-icon">
 </div>

@@ -15,7 +15,7 @@
     </ul>
   </div>
 
-  <div class="characteristics">
+  <div class="characteristics" *ngIf="item.characteristics?.length">
     <h4>Caractéristiques</h4>
     <ul>
       <app-infobulle-characteristic-line *ngFor="let charac of item.characteristics"
