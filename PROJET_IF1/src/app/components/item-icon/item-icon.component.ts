@@ -36,8 +36,8 @@ export class ItemIconComponent {
   }
 
   updateTooltipPosition(event: MouseEvent) {
-    this.tooltipX = event.clientX + 10;
-    this.tooltipY = event.clientY + 10;
+    this.tooltipX = event.pageX +10;
+    this.tooltipY = event.pageY + 10;
   }
 
 
