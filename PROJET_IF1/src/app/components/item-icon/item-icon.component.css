@@ -1,6 +1,7 @@
 .item-icon-container {
   display: inline-block;
   position: relative;
+  align-items: center;
   padding: 10px;
   border-radius: 12px;
   background: linear-gradient(145deg, #c4a77d, #e2c799);
@@ -40,4 +41,12 @@
   font-family: 'DofusFont', sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border: 1px solid #8b5e3b;
+  z-index: 1000;
+  max-width: 250px;
+  word-wrap: break-word;
+  pointer-events: none;
+}
+
+.infobulle {
+  pointer-events: none;
 }

@@ -6,7 +6,7 @@
   <img [src]="item?.imageUrl" [alt]="item?.name" class="item-icon">
 </div>
 
-<app-item-infobulle *ngIf="showInfobulle"
+<app-item-infobulle class="infobulle" *ngIf="showInfobulle"
                     [x]="tooltipX"
                     [y]="tooltipY"
                     [item]="item">
